@@ -1,23 +1,11 @@
 "use client"
 
-import { Code, Play, Sparkles, Share, Download } from "lucide-react";
+import { Code, Sparkles } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
-import { Button } from "./ui/button";
-import { Separator } from "@radix-ui/react-separator";
+
 
 export function Navbar() {
-    const handleShare = () => {
-        // Implement share functionality
-        alert("Share functionality not implemented yet.");
-    };
-    const handleDownload = () => {
-        // Implement download functionality
-        alert("Download functionality not implemented yet.");
-    };
-    const handleRun = () => {
-        // Implement run functionality
-        alert("Run functionality not implemented yet.");
-    };
+
     return (
         <nav className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 sticky top-0 z-50">
             <div className="container mx-auto px-6 py-4">
@@ -42,38 +30,7 @@ export function Navbar() {
 
                     {/* Action Buttons */}
                     <div className="flex items-center space-x-2">
-                        <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={handleShare}
-                            className="hidden md:flex items-center space-x-2 hover:bg-slate-100 dark:hover:bg-slate-700"
-                        >
-                            <Share className="w-4 h-4" />
-                            <span>Share</span>
-                        </Button>
-
-                        <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={handleDownload}
-                            className="hidden md:flex items-center space-x-2 hover:bg-slate-100 dark:hover:bg-slate-700"
-                        >
-                            <Download className="w-4 h-4" />
-                            <span>Export</span>
-                        </Button>
-
-                        <Separator orientation="vertical" className="h-6 hidden md:block" />
-
                         <ThemeToggle />
-
-                        <Button
-                            onClick={handleRun}
-                            className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-200"
-                            size="sm"
-                        >
-                            <Play className="w-4 h-4 mr-2" />
-                            <span>Run Code</span>
-                        </Button>
                     </div>
                 </div>
             </div>
