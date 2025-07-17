@@ -7,13 +7,15 @@ import { PreviewArea } from "@/components/editor/Previewarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
 import { HTML_SNIPPET, CSS_SNIPPET, JS_SNIPPET } from "@/constants/snippetes";
-
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label"
 
 export default function Home() {
   const [htmlCode, setHtmlCode] = useState(HTML_SNIPPET);
   const [cssCode, setCssCode] = useState(CSS_SNIPPET);
   const [jsCode, setJsCode] = useState(JS_SNIPPET);
   const [currentTab, setCurrentTab] = useState<'html' | 'css' | 'js'>('html');
+  const [aiEnabled, setAiEnabled] = useState(true);
 
   const injectThemeAndCode = (html: string, css: string, js: string) => {
     let modifiedHtml = html;
@@ -65,6 +67,19 @@ export default function Home() {
               <h2 className="text-xl font-semibold text-slate-700 dark:text-slate-200">
                 Code Editor
               </h2>
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-2">
+                  <Switch
+                    id="ai-toggle"
+                    checked={aiEnabled}
+                    onCheckedChange={setAiEnabled}
+                  />
+                  <Label htmlFor="ai-toggle" className="text-sm text-slate-700 dark:text-slate-200">
+                    AI Suggestions
+                  </Label>
+                </div>
+
+              </div>
               <div className="flex items-center space-x-2">
                 <span className="w-3 h-3 bg-red-400 rounded-full"></span>
                 <span className="w-3 h-3 bg-yellow-400 rounded-full"></span>
@@ -100,6 +115,7 @@ export default function Home() {
                     language="html"
                     code={htmlCode}
                     onChange={setHtmlCode}
+                    aiEnabled={aiEnabled}
                   />
                 </TabsContent>
                 <TabsContent value="css" className="h-full mt-0">
@@ -107,6 +123,7 @@ export default function Home() {
                     language="css"
                     code={cssCode}
                     onChange={setCssCode}
+                    aiEnabled={aiEnabled}
                   />
                 </TabsContent>
                 <TabsContent value="js" className="h-full mt-0">
@@ -114,6 +131,7 @@ export default function Home() {
                     language="javascript"
                     code={jsCode}
                     onChange={setJsCode}
+                    aiEnabled={aiEnabled}
                   />
                 </TabsContent>
               </div>
